@@ -8,7 +8,13 @@ class PageFront(InterfaceHomeFront):
     def __init__(self) -> None:
         self.__color = "white"
         sg.theme_background_color(self.__color)
-
+        self.dados_salvos =  [""]
+        
+        with open('App\data\dt-temp.txt', 'r') as arquivos:
+            for i, arquivo in enumerate(arquivos):
+                self.dados_salvos[i] = str(arquivo).strip()
+   
+            
     def _front_end(self):
         barra_notificacao = [
             sg.Image(filename="App//img//barra de notificacao.png", pad=(0, (0, 100)))
@@ -52,14 +58,16 @@ class PageFront(InterfaceHomeFront):
                         pad=(20, (0, 5)),
                     ),
                     sg.Input(
-                        "",
+                        f"{self.dados_salvos[0]}",
                         size=(25, 10),
                         background_color=self.__color,
                         font="Jaldi 13",
                         pad=(0, (0, 5)),
                         border_width=0,
                         text_color="#535353",
+                        key="email",
                     ),
+                        
                     sg.Image(
                         filename="App//img//invisivel.png",
                         background_color=self.__color,
@@ -87,7 +95,7 @@ class PageFront(InterfaceHomeFront):
                     pad=(20, (0, 5)),
                 ),
                 sg.Input(
-                    "",
+                    f"",
                     size=(25, 10),
                     password_char="*",
                     background_color=self.__color,
@@ -95,10 +103,21 @@ class PageFront(InterfaceHomeFront):
                     pad=(0, (0, 5)),
                     border_width=0,
                     text_color="#535353",
+                    key="password",
                 ),
                 sg.Image(
                     filename="App//img//password-closed.png",
                     background_color=self.__color,
+                    enable_events=True,
+                    key="btn-password-closed",
+                    pad=(30, (0, 5)),
+                ),
+                sg.Image(
+                    filename="App//img//password-open.png",
+                    background_color=self.__color,
+                    enable_events=True,
+                    visible=False,
+                    key="btn-password-open",
                     pad=(30, (0, 5)),
                 ),
             ],
@@ -111,17 +130,20 @@ class PageFront(InterfaceHomeFront):
                     background_color=self.__color,
                     checkbox_color="white",
                     font="Jaldi 10 ",
+                    key="chk-remember-me",
                     text_color="#FFA620",
                     pad=(20, (0, 0)),
                 ),
-                sg.Text("", background_color=self.__color, pad=(30,(0,0))),
+                sg.Text("", background_color=self.__color, pad=(30, (0, 0))),
                 sg.Text(
                     "Forget Password?",
                     font="Jaldi 10 ",
                     background_color=self.__color,
                     text_color="#FFA620",
+                    enable_events=True,
+                    key="forget-password",
                     pad=(20, (0, 0)),
-                    justification='r'
+                    justification="r",
                 ),
             ]
         ]
@@ -133,6 +155,7 @@ class PageFront(InterfaceHomeFront):
                 pad=(0, (50, 15)),
                 font="Jaldi 20 bold",
                 button_color="#FF9900",
+                key="btn-login",
                 mouseover_colors="black",
             )
         ]
@@ -151,18 +174,23 @@ class PageFront(InterfaceHomeFront):
                     filename="App//img//facebook 1.png",
                     background_color=self.__color,
                     pad=(20, (0, 0)),
+                    key="facebook",
                 ),
                 sg.Image(
                     filename="App//img//instagram 1.png",
                     background_color=self.__color,
                     pad=(20, (0, 0)),
+                    key="instagram",
                 ),
                 sg.Image(
                     filename="App//img//linkedin.png",
                     background_color=self.__color,
                     pad=(20, (0, 0)),
+                    key="linkedin",
                 ),
             ],
+        ]
+        rodape_sign_up = [
             [
                 sg.Text(
                     "Dont't have account?",
@@ -176,11 +204,12 @@ class PageFront(InterfaceHomeFront):
                     font="Jaldi 10 bold",
                     background_color=self.__color,
                     text_color="#FFA620",
-                    pad=(0,(20,0))
+                    enable_events=True,
+                    key="sign-up",
+                    pad=(0, (20, 0)),
                 ),
             ],
         ]
-        rodape_sign_up = []
 
         layout = [
             barra_notificacao,
@@ -202,11 +231,7 @@ class PageFront(InterfaceHomeFront):
             icon="App//img//sol.ico",
         )
 
-        while True:
-            event, values = window.read()
-
-            if event == sg.WIN_CLOSED:
-                break
+        return window
 
 
 if __name__ == "__main__":
