@@ -10,7 +10,7 @@
 ### Progresso
 
 > Interface Login.
-<img src="Doc//login.png" alt="logo_samuelflm">
+<img src="Doc//login_.png" alt="logo_samuelflm">
 
 > Interface Register.
-<img src="Doc//register.png" alt="logo_samuelflm">
+<img src="Doc//register_.png" alt="logo_samuelflm">
