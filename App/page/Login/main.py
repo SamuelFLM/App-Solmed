@@ -1,6 +1,6 @@
-from interface_back import InterfaceHomeBack
+from iback import InterfaceHomeBack
 import PySimpleGUI as sg
-from page_front import PageFront
+from tela import PageFront
 
 class PageBack(InterfaceHomeBack):
     

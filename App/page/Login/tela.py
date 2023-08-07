@@ -1,4 +1,4 @@
-from interface_front import InterfaceHomeFront
+from ifront import InterfaceHomeFront
 import PySimpleGUI as sg
 
 
