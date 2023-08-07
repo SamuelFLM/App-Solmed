@@ -7,11 +7,10 @@
 
 >Solmed é um aplicativo de gestão de pacientes hospitalares que permite aos usuários marcar consultas, gerenciar seus registros médicos e muito mais. Com uma interface intuitiva e fácil de usar, o Solmed torna mais fácil para os pacientes gerenciarem sua saúde e se comunicarem com seus médicos. Baixe agora e experimente!
 
-### Figma
-<img src="Doc//interface_home.png" alt="logo_samuelflm">
-
-
 ### Progresso
 
-> Interface Login já desenvolvida.
-<img src="Doc//figma.png" alt="logo_samuelflm">
+> Interface Login.
+<img src="Doc//login.png" alt="logo_samuelflm">
+
+> Interface Register.
+<img src="Doc//register.png" alt="logo_samuelflm">
