@@ -1,13 +1,13 @@
-from iback import InterfaceHomeBack
+from iback import IBackLogin
 import PySimpleGUI as sg
-from tela import PageFront
+from tela import Tela
 
-class PageBack(InterfaceHomeBack):
+class Main(IBackLogin):
     
     def __init__(self) -> None:
-        self.window = PageFront()._front_end()
+        self.window = Tela()._front_end()
         
-    def _back_end(self):
+    def _main(self):
         
         while True:
             event, values = self.window.read(timeout=1)
@@ -43,6 +43,6 @@ class PageBack(InterfaceHomeBack):
                 self.window["password"].update(password_char="*")
 
 if __name__ == "__main__":
-    PageBack()._back_end()
+    Main()._main()
     
     

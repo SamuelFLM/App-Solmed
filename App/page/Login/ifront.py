@@ -1,7 +1,7 @@
 
 import abc
 
-class InterfaceHomeFront(abc.ABC):
+class IFrontLogin(abc.ABC):
     
     @abc.abstractclassmethod
     def _front_end():

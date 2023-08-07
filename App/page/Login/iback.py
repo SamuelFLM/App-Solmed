@@ -1,7 +1,7 @@
 
 import abc
 
-class InterfaceHomeBack(abc.ABC):
+class IBackLogin(abc.ABC):
     @abc.abstractclassmethod
-    def _back_end():
+    def _main():
         pass

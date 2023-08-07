@@ -1,8 +1,8 @@
-from ifront import InterfaceHomeFront
+from ifront import IFrontLogin
 import PySimpleGUI as sg
 
 
-class PageFront(InterfaceHomeFront):
+class Tela(IFrontLogin):
     __slots__ = ["__color"]
 
     def __init__(self) -> None:
@@ -235,4 +235,4 @@ class PageFront(InterfaceHomeFront):
 
 
 if __name__ == "__main__":
-    PageFront()._front_end()
+    Tela()._front_end()
