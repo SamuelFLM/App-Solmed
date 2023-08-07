@@ -10,4 +10,6 @@ class Tela(IFrontRegister):
         sg.theme_background_color(self.__color)
 
     def _front_end(self):
-        pass
+        barra_notificacao = [
+            sg.Image(filename="App//img//barra de notificacao.png", pad=(0, (0, 50)))
+        ]

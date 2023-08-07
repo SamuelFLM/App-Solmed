@@ -63,7 +63,7 @@ class Tela(IFrontLogin):
                     sg.Image(
                         filename="App//img//email.png",
                         background_color=self.__color,
-                        pad=(10, (0, 5)),
+                        pad=(20, (0, 5)),
                     ),
                     sg.Input(
                         f"{self.dados_salvos[0]}",
@@ -100,7 +100,7 @@ class Tela(IFrontLogin):
                 sg.Image(
                     filename="App//img//password.png",
                     background_color=self.__color,
-                    pad=(10, (0, 5)),
+                    pad=(20, (0, 5)),
                 ),
                 sg.Input(
                     f"",
@@ -126,7 +126,7 @@ class Tela(IFrontLogin):
                     enable_events=True,
                     visible=False,
                     key="btn-password-open",
-                    pad=(0, (0, 5)),
+                    pad=(30, (0, 5)),
                 ),
             ],
             [sg.HSep(pad=(20, (0, 15)))],
