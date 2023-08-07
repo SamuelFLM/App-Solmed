@@ -17,26 +17,34 @@ class Tela(IFrontLogin):
             
     def _front_end(self):
         barra_notificacao = [
-            sg.Image(filename="App//img//barra de notificacao.png", pad=(0, (0, 100)))
+            sg.Image(filename="App//img//barra de notificacao.png", pad=(0, (0, 50)))
         ]
 
         logo = [
-            sg.Image(
+            #[sg.Text("", background_color=self.__color, pad=(100, (0, 40))),],
+            [sg.Image(
                 filename="App//img//logo.png",
                 background_color=self.__color,
-                pad=(70, (0, 50)),
-            )
+                pad=(0, (0, 70)),
+            ),]
+           
         ]
 
         welcome_back = [
-            sg.Text(
+            [sg.Text(
                 "Welcome back",
-                font="Jaldi 19 bold",
+                font="Jaldi 20 bold",
                 background_color=self.__color,
                 text_color="#FFA620",
+                pad=(0, (0, 0)),
+            ),],
+            [sg.Text(
+                "Sign to continue",
+                font="Jaldi 10 bold",
+                background_color=self.__color,
+                text_color="#535353",
                 pad=(0, (0, 40)),
-            ),
-            sg.Text("", background_color=self.__color, pad=(78, (0, 40))),
+            ),]
         ]
 
         email = (
@@ -55,7 +63,7 @@ class Tela(IFrontLogin):
                     sg.Image(
                         filename="App//img//email.png",
                         background_color=self.__color,
-                        pad=(20, (0, 5)),
+                        pad=(10, (0, 5)),
                     ),
                     sg.Input(
                         f"{self.dados_salvos[0]}",
@@ -92,7 +100,7 @@ class Tela(IFrontLogin):
                 sg.Image(
                     filename="App//img//password.png",
                     background_color=self.__color,
-                    pad=(20, (0, 5)),
+                    pad=(10, (0, 5)),
                 ),
                 sg.Input(
                     f"",
@@ -118,7 +126,7 @@ class Tela(IFrontLogin):
                     enable_events=True,
                     visible=False,
                     key="btn-password-open",
-                    pad=(30, (0, 5)),
+                    pad=(0, (0, 5)),
                 ),
             ],
             [sg.HSep(pad=(20, (0, 15)))],
@@ -129,7 +137,7 @@ class Tela(IFrontLogin):
                     "Remember me",
                     background_color=self.__color,
                     checkbox_color="white",
-                    font="Jaldi 10 ",
+                    font="Jaldi 10 bold ",
                     key="chk-remember-me",
                     text_color="#FFA620",
                     pad=(20, (0, 0)),
@@ -137,12 +145,12 @@ class Tela(IFrontLogin):
                 sg.Text("", background_color=self.__color, pad=(30, (0, 0))),
                 sg.Text(
                     "Forget Password?",
-                    font="Jaldi 10 ",
+                    font="Jaldi 10 bold",
                     background_color=self.__color,
                     text_color="#FFA620",
                     enable_events=True,
                     key="forget-password",
-                    pad=(20, (0, 0)),
+                    pad=(15, (0, 0)),
                     justification="r",
                 ),
             ]
