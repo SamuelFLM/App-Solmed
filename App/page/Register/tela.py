@@ -19,6 +19,7 @@ class Tela(IFrontRegister):
                 filename="App//img//back.png",
                 pad=(0, (0, 0)),
                 background_color=self.__color,
+                enable_events=True,
                 key="btn_back",
             ),
             sg.Text("", pad=(135, (0, 0)), background_color=self.__color),
@@ -26,6 +27,7 @@ class Tela(IFrontRegister):
                 filename="App//img//help.png",
                 pad=(0, (0, 0)),
                 background_color=self.__color,
+                enable_events=True,
                 key="btn_help",
             ),
         ]
@@ -309,13 +311,6 @@ class Tela(IFrontRegister):
             element_justification="c",
             icon="App//img//sol.ico",
         )
-
-        while True:
-            event, values = window.read(timeout=1)
-
-            if event == sg.WIN_CLOSED:
-                break
-
-
+        return window 
 if __name__ == "__main__":
     Tela()._front_end()
