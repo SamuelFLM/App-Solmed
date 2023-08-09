@@ -1,13 +1,14 @@
-from iback import IBackLogin
+from .iback import IBackLogin
 import PySimpleGUI as sg
-from tela import Tela
+from .tela import Tela
 
-class Main(IBackLogin):
+class MainLogin(IBackLogin):
     
-    def __init__(self) -> None:
+    def __init__(self, conexao) -> None:
         self.window = Tela()._front_end()
+        self.conexao = conexao
         
-    def _main(self):
+    def _main(self, tela_register):
         
         while True:
             event, values = self.window.read(timeout=1)
@@ -29,7 +30,9 @@ class Main(IBackLogin):
 
             # validação cadastro
             if event == "sign-up":
-                print("login")
+                self.window.close()
+                tela_register._main()
+                break
 
             # validação open/closed senha
             if event == "btn-password-closed":
@@ -43,6 +46,6 @@ class Main(IBackLogin):
                 self.window["password"].update(password_char="*")
 
 if __name__ == "__main__":
-    Main()._main()
+    MainLogin()._main()
     
     

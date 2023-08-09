@@ -1,4 +1,4 @@
-from ifront import IFrontLogin
+from .ifront import IFrontLogin
 import PySimpleGUI as sg
 
 

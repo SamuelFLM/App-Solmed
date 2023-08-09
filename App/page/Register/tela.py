@@ -1,4 +1,4 @@
-from ifront import IFrontRegister
+from .ifront import IFrontRegister
 import PySimpleGUI as sg
 
 
