@@ -45,6 +45,7 @@ class ConexaoBancoDeDados:
         query = ""
         self.cursor.execute(query)
         self.cursor.commit()
+        
     def valida_usuario_existente_id(self, email):
         query = f"SELECT EMAIL FROM USUARIO WHERE EMAIL = '{email}'"
         self.cursor.execute(query)

@@ -36,6 +36,26 @@ class MainRegister(IBackRegister):
                 if validacao == "V":
                     self.conexao.registro(name, email, phone, password)
             
+            if event == "btn-password-closed":
+                self.window["btn-password-closed"].update(visible=False)
+                self.window["btn-password-open"].update(visible=True)
+                self.window["password"].update(password_char="")
+
+            if event == "btn-password-open":
+                self.window["btn-password-open"].update(visible=False)
+                self.window["btn-password-closed"].update(visible=True)
+                self.window["password"].update(password_char="*")
+                
+            if event == "btn-password-closed-confirm":
+                self.window["btn-password-closed-confirm"].update(visible=False)
+                self.window["btn-password-open-confirm"].update(visible=True)
+                self.window["password-confirm"].update(password_char="")
+
+            if event == "btn-password-open-confirm":
+                self.window["btn-password-open-confirm"].update(visible=False)
+                self.window["btn-password-closed-confirm"].update(visible=True)
+                self.window["password-confirm"].update(password_char="*")
+            
             if event == "btn_back":
                 print("voltar")
             if event == "btn_help":
