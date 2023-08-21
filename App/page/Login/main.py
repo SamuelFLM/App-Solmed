@@ -36,7 +36,7 @@ class MainLogin(IBackLogin):
                         if (email == str(dados[0][0]).strip()) and (password == str(dados[0][1].strip())):
                             bot.confirm(
                                 title="SUCESS",
-                                text="ENTRANDO NO SISTEMA",
+                                text=f"BEM VINDO AO SISTEMA {str(dados[0][2]).title()}",
                                 buttons=["OK"],
                             )
                         else:bot.confirm(
@@ -44,7 +44,7 @@ class MainLogin(IBackLogin):
                                 text="EMAIL OU SENHA INCORRETOS",
                                 buttons=["OK"],
                             )
-
+               
             # validação esqueceu senha
             if event == "forget-password":
                 print("esqueci senha")

@@ -63,11 +63,12 @@ class ConexaoBancoDeDados:
     def login_sistema(self, email):
         validador_usuario = self.valida_usuario_existente_id(email)
         if not validador_usuario:
-            query = f"SELECT EMAIL, SENHA FROM USUARIO WHERE EMAIL = '{email}'"
+            query = f"SELECT EMAIL, SENHA, NOME FROM USUARIO WHERE EMAIL = '{email}'"
             self.cursor.execute(query)
             dados = self.cursor.fetchall()
             return dados
-  
+        else: False
+        
     def valida_usuario_existente_id(self, email):
         query = f"SELECT EMAIL FROM USUARIO WHERE EMAIL = '{email}'"
         self.cursor.execute(query)
