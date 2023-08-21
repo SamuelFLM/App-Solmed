@@ -1,5 +1,5 @@
 import pyodbc
-
+import pyautogui as bot
 
 class ConexaoBancoDeDados:
     def __init__(self) -> None:
@@ -14,7 +14,7 @@ class ConexaoBancoDeDados:
         )
         self.cursor = cnxn.cursor()
 
-    def registro(self, nome, email, celular, senha):
+    def registro(self, nome: str, email: str, celular: str, senha: str):
         validador = self.valida_usuario_existente_id(email)
         if validador:
             query = f"""INSERT INTO [dbo].[USUARIO]
@@ -22,17 +22,31 @@ class ConexaoBancoDeDados:
             ,[email]
             ,[celular]
             ,[senha])
-            VALUES('{nome}', '{email}', '{celular}', '{senha}')"""
+            VALUES('{nome.strip()}', '{email.strip()}', '{celular.strip()}', '{senha.strip()}')"""
             self.cursor.execute(query)
             self.cursor.commit()
-        else: print("Usuario existente")
+        else: bot.confirm(
+                        title="ERRO",
+                        text="USUARIO NAO EXISTENTE!",
+                        buttons=["OK"],
+                    )
+        
     def obter_usuario(self):
         query = ""
         self.cursor.execute(query)
         self.cursor.commit()
 
-    def obter_usuario_id(self):
-        query = ""
+    def obter_usuario_id(self, email):
+        validador = self.valida_usuario_existente_id(email)
+        if validador:
+            query = f"SELECT EMAIL FROM USUARIO WHERE EMAIL = '{email}'"
+            self.cursor.execute(query)
+            self.cursor.commit()
+        else:  bot.confirm(
+                        title="ERRO",
+                        text="USUARIO NAO EXISTENTE!",
+                        buttons=["OK"],
+                    )
         self.cursor.execute(query)
         self.cursor.commit()
 
@@ -45,7 +59,15 @@ class ConexaoBancoDeDados:
         query = ""
         self.cursor.execute(query)
         self.cursor.commit()
-        
+
+    def login_sistema(self, email):
+        validador_usuario = self.valida_usuario_existente_id(email)
+        if not validador_usuario:
+            query = f"SELECT EMAIL, SENHA FROM USUARIO WHERE EMAIL = '{email}'"
+            self.cursor.execute(query)
+            dados = self.cursor.fetchall()
+            return dados
+  
     def valida_usuario_existente_id(self, email):
         query = f"SELECT EMAIL FROM USUARIO WHERE EMAIL = '{email}'"
         self.cursor.execute(query)
